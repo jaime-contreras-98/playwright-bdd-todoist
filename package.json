@@ -25,5 +25,9 @@
   "devDependencies": {
     "@playwright/test": "^1.45.3",
     "@types/node": "^20.14.12"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.8.0",
+    "dotenv": "^16.4.5"
   }
 }

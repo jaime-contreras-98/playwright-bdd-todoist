@@ -1,0 +1,5 @@
+{
+    "emailInput": "#element-0",
+    "passwordInput": "#element-3",
+    "loginBtn": "//button[@type='submit']"
+}
