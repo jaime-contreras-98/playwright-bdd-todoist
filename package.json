@@ -1,0 +1,27 @@
+{
+  "name": "playwright-bdd-todoist",
+  "version": "1.0.0",
+  "description": "Automation e2e framework with BDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaime-contreras-98/playwright-bdd-todoist.git"
+  },
+  "keywords": [
+    "QA",
+    "Playwright",
+    "E2E",
+    "Automation",
+    "TS",
+    "JS"
+  ],
+  "author": "Jaime Contreras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaime-contreras-98/playwright-bdd-todoist/issues"
+  },
+  "homepage": "https://github.com/jaime-contreras-98/playwright-bdd-todoist#readme"
+}
