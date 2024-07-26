@@ -1,0 +1,85 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "positive-and-negative-login-tests;sad-path-login",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Sad path login",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2248310625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I click on \"Login\" on header bar",
+            "match": {
+              "location": "features/step-definitions/login-steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3127373291
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "I login with \"dsa\" and \"dsa\" as my credentials",
+            "match": {
+              "location": "features/step-definitions/login-steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1457775417
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I validate wrong user message",
+            "match": {
+              "location": "features/step-definitions/login-steps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 374362458
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 1
+          },
+          {
+            "name": "@sad-login",
+            "line": 8
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "positive-and-negative-login-tests",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Positive and negative login tests",
+    "tags": [
+      {
+        "name": "@login",
+        "line": 1
+      }
+    ],
+    "uri": "features/login.feature"
+  }
+]

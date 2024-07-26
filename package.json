@@ -24,7 +24,8 @@
   "homepage": "https://github.com/jaime-contreras-98/playwright-bdd-todoist#readme",
   "devDependencies": {
     "@playwright/test": "^1.45.3",
-    "@types/node": "^20.14.12"
+    "@types/node": "^20.14.12",
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "@cucumber/cucumber": "^10.8.0",
