@@ -1,0 +1,14 @@
+┌──────────────────────────────────────────────────────┬───────────┬─────────────────────────────────────────────┐
+│ Pattern / Text                                       │ Duration  │ Location                                    │
+├──────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┤
+│ I click on {string} on header bar                    │ 3127.37ms │ features/step-definitions/login-steps.ts:18 │
+│   I click on "Login" on header bar                   │ 3127.37ms │ features/login.feature:6                    │
+├──────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┤
+│ I login with {string} and {string} as my credentials │ 1457.78ms │ features/step-definitions/login-steps.ts:23 │
+│   I login with "dsa" and "dsa" as my credentials     │ 1457.78ms │ features/login.feature:10                   │
+├──────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┤
+│ I validate wrong user message                        │ 374.36ms  │ features/step-definitions/login-steps.ts:29 │
+│   I validate wrong user message                      │ 374.36ms  │ features/login.feature:11                   │
+├──────────────────────────────────────────────────────┼───────────┼─────────────────────────────────────────────┤
+│ I visit {string} website                             │ UNUSED    │ features/step-definitions/common-steps.ts:3 │
+└──────────────────────────────────────────────────────┴───────────┴─────────────────────────────────────────────┘

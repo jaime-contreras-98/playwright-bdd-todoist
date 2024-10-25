@@ -1,0 +1,19 @@
+{
+    "days": {
+        "today": "Today",
+        "tomorrow": "Tomorrow"
+    },
+    "priority": {
+        "one": "Priority 1",
+        "two": "Priority 2",
+        "three": "Priority 3",
+        "four": "Priority 4"
+    },
+    "sideBarOptions": {
+        "search": "",
+        "inbox": "Inbox"
+    },
+    "tasks": {
+        "toastNew": "Task added to Inbox"
+    }
+}

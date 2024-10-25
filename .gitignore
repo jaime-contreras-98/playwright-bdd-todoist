@@ -1,0 +1,9 @@
+node_modules/
+reports/
+package-lock.json
+/tests-examples/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.env
