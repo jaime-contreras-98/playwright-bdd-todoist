@@ -11,6 +11,6 @@ Before(async function(this: CustomWorld) {
   pomanager = new POManager(this.config.page);
 });
 
-Given('I visit home website', async () => {
-  await pomanager.getBasePage().visitHomePage();
+Given('I click on {string} on header bar', {timeout:30000}, async (linkName: string) => {
+  await pomanager.getBasePage().clickLinkHeader(linkName);
 });

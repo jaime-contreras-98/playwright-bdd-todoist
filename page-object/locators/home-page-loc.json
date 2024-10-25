@@ -1,3 +1,22 @@
 {
-    "todayLabel": "div > div > h1"
+    "textLabel": "div > div > h1",
+    "sideBar": {
+        "addTaskBtn": ".sgZf_PQ > div:nth-child(2) > button",
+        "inboxBtn": "//li[@id='filter_inbox']"
+    },
+    "newTaskDiv": {
+        "taskNameInp": "//div[@id] //p[@data-placeholder='Task name']",
+        "descriptionInp": "//div[@id] //p[@data-placeholder='Description']",
+        "addTaskBtn": "//div[@id]  //button[@data-testid='task-editor-submit-button']",
+        "dueDateBtn": "div[aria-label='Set due date']",
+        "dueDateList": ".scheduler-suggestions > button",
+        "priorityBtn": "div[aria-label='Set priority']",
+        "priorityList": "div[id*=dropdown] > ul > li",
+        "addedTaskNameLbl": "div[id*='task'] .task_content",
+        "addedTaskDescrLbl": "div[id*='task'] .task_description"
+    },
+    "toastContainer": {
+        "toastDiv": "div[data-testid='toasts-container'] div[role]",
+        "toastText": "div[data-testid='toasts-container'] div[role] > div:nth-child(1)"
+    }
 }

@@ -3,10 +3,11 @@ var common = [
   }`,
   'features/*.feature',
   '--format json:./reports/cucumber-json-reports/report.json',
-  '--format rerun:@rerun.txt',
-  '--format usage:usage.txt',
-  '--parallel 20',
+  '--format rerun:./reports/@rerun.txt',
+  '--format usage:./reports/usage.txt',
+  '--parallel 4',
   '--require ./features/step-definitions/*.ts',
+  '--require ./features/step-definitions/hooks/*.ts',
   '--require-module ts-node/register'
   //'--require ./build/tests/support/*.js'
 ].join(' ');

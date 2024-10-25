@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Automation e2e framework with BDD",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "loginTest": "npx playwright test login.spec.ts --headed --project chromium",
+    "taskTest": "npx playwright test tasks.spec.ts --headed --project chromium",
+    "bddLoginTest": "npx cucumber-js -p default --tags '@login'",
+    "bddTasksTest": "npx cucumber-js -p default --tags '@tasks'"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaime-contreras-98/playwright-bdd-todoist.git"
@@ -23,7 +28,7 @@
   },
   "homepage": "https://github.com/jaime-contreras-98/playwright-bdd-todoist#readme",
   "devDependencies": {
-    "@playwright/test": "^1.45.3",
+    "@playwright/test": "^1.48.1",
     "@types/node": "^20.14.12",
     "ts-node": "^10.9.2"
   },

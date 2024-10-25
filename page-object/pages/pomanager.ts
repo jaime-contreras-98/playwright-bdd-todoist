@@ -1,7 +1,7 @@
-import {Page,expect} from '@playwright/test';
-import {BasePage} from '../pages/base-page';
-import {LoginPage} from '../pages/login-page';
-import {HomePage} from '../pages/home-page';
+import {Page} from '@playwright/test';
+import {BasePage} from './landing-page';
+import {LoginPage} from './login-page';
+import {HomePage} from './home-page';
 
 export class POManager {
 
@@ -29,3 +29,5 @@ export class POManager {
         return this.homePage;
     }
 }
+
+module.exports = {POManager};

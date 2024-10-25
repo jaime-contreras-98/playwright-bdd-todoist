@@ -1,16 +1,17 @@
-import {Page, expect} from '@playwright/test';
-import * as baselocators from '../../page-object/locators/base-page-loc.json';
+import 'dotenv/config';
+import {Page} from '@playwright/test';
+import * as baselocators from '../locators/landing-page-loc.json';
 
 export class BasePage {
 
     private page: Page;
 
-    constructor(page: Page) {
+    constructor(page: any) {
         this.page = page;
     }
 
     public async visitHomePage() {
-        await this.page.goto('/');
+        await this.page.goto(process.env.PROD_URL);
     }
 
     public async clickLinkHeader(linkName: string) {

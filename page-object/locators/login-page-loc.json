@@ -1,6 +1,6 @@
 {
     "emailInput": "#element-0",
-    "passwordInput": "#element-3",
+    "passwordInput": "#element-2",
     "loginBtn": "//button[@type='submit']",
     "errorMsgLabel": "form > div:nth-child(1)"
 }
