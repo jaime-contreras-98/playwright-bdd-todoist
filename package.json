@@ -4,10 +4,11 @@
   "description": "Automation e2e framework with BDD",
   "main": "index.js",
   "scripts": {
-    "loginTest": "npx playwright test login.spec.ts --headed --project chromium",
-    "taskTest": "npx playwright test tasks.spec.ts --headed --project chromium",
-    "bddLoginTest": "npx cucumber-js -p default --tags '@login'",
-    "bddTasksTest": "npx cucumber-js -p default --tags '@tasks'"
+    "deleteAllureFolder": "node -e \"require('fs').rmdirSync('allure-results', { recursive: true }); process.exit(0);\"",
+    "loginTest": "npm run deleteAllureFolder; npx playwright test login.spec.ts --headed --project chromium; allure serve allure-results",
+    "taskTest": "npm run deleteAllureFolder; npx playwright test tasks.spec.ts --headed --project chromium; allure serve allure-results",
+    "bddLoginTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@login'; allure serve allure-results",
+    "bddTasksTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@tasks'; allure serve allure-results"
   },
   "repository": {
     "type": "git",
@@ -28,12 +29,15 @@
   },
   "homepage": "https://github.com/jaime-contreras-98/playwright-bdd-todoist#readme",
   "devDependencies": {
-    "@playwright/test": "^1.48.1",
+    "@cucumber/cucumber": "^11.0.1",
+    "@cucumber/messages": "^27.0.0",
+    "@playwright/test": "^1.48.2",
     "@types/node": "^20.14.12",
+    "allure-cucumberjs": "^3.0.5",
+    "allure-playwright": "^3.0.5",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^10.8.0",
     "dotenv": "^16.4.5"
   }
 }

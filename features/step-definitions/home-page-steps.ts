@@ -22,7 +22,6 @@ Then('I validate presence of task created with {string} and {string}', async(nam
     await pomanager.getHomePage().validateTaskExistsInbox(name, description);
 });
 
-
 Then('I validate homepage presence', {timeout:30000}, async () => {
     await pomanager.getHomePage().assertHomeElements();
 });

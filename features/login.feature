@@ -15,7 +15,6 @@ Feature: Positive and negative login tests
       | hello1@gmail.com | asdfsdaf123 |
       | hello2@gmail.com | asasds2465  |
 
-  @happy-login
   Scenario: Happy path login
     Given I login with correct credentials
     Then I validate homepage presence
