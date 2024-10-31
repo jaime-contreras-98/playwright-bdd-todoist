@@ -7,3 +7,4 @@ package-lock.json
 /blob-report/
 /playwright/.cache/
 .env
+/allure-results/
