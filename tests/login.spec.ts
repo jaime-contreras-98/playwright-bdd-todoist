@@ -3,12 +3,12 @@ import { POManager } from '../page-object/pages/pomanager';
 import * as basedata from '../fixtures/base-data.json';
 import * as constants from '../fixtures/data/constants';
 
-let pomanager : POManager;
+let pomanager: POManager;
 let basePage: any;
 let loginPage: any;
 let homePage: any;
 
-test.beforeEach(async ({page}) => {
+test.beforeEach(async ({ page }) => {
   pomanager = new POManager(page);
   basePage = pomanager.getBasePage();
   loginPage = pomanager.getLoginPage();

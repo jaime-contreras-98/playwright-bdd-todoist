@@ -1,4 +1,3 @@
-import { World } from '@cucumber/cucumber';
 import { Page } from '@playwright/test';
 const playwright = require('@playwright/test');
 
