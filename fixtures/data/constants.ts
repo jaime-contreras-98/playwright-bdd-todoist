@@ -8,6 +8,11 @@ export const LOGIN_CREDENTIALS : {email: string, password: string, fakeEmail: st
     fakePassword: process.env.FAKE_USER_PASSWORD.toString(),
 };
 
+export const LOGIN_INFO: {cookie: string, token: string} = {
+    cookie: 'Cookie',
+    token: 'Token'
+};
+
 export const TASKS: {name: string, descr: string} = {
     name: "Task Name: " + crypto.randomUUID(),
     descr: "Task Description: " + crypto.randomUUID()

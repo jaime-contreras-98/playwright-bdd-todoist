@@ -1,0 +1,14 @@
+{
+    "login": "https://app.todoist.com/api/v9.101/user/login",
+    "home": "https://app.todoist.com/app/today",
+    "task": {
+        "create": "",
+        "edit": "",
+        "delete": ""
+    },
+    "project": {
+        "create": "",
+        "edit": "",
+        "delete": ""
+    }
+}

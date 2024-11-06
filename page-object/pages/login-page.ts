@@ -1,7 +1,9 @@
-import 'dotenv/config';
 import {Page, expect, request} from '@playwright/test';
+import {LOGIN_INFO} from '../../fixtures/data/constants';
+import * as apiendpoint from '../../fixtures/data/endpoints.json';
 import * as loginlocators from '../../page-object/locators/login-page-loc.json';
 import * as logindata from '../../fixtures/login-data.json';
+import 'dotenv/config';
 
 export class LoginPage {
 
@@ -24,7 +26,7 @@ export class LoginPage {
 
     public async getLoginInfoApi(username: string, password: string, param: string) {
         const context = await request.newContext();
-        const response = await context.post('https://app.todoist.com/api/v9.101/user/login', {
+        const response = await context.post(apiendpoint.login, {
             headers: {
                 'Content-Type': 'application/json',
                 'Doist-Platform': 'web'
@@ -43,8 +45,8 @@ export class LoginPage {
         const bearerToken = 'Bearer ' + responseBody.token;
         const cookieSession = response.headers()['set-cookie'].split('todoistd')[1].split('Domain')[0].replace(/[":,;]/g,"").slice(1).trim();
         
-        if(param === 'Token') return bearerToken;
-        else if(param === 'Cookie') return cookieSession;
+        if(param === LOGIN_INFO.token) return bearerToken;
+        else if(param === LOGIN_INFO.cookie) return cookieSession;
 
         return null;
     };
@@ -62,6 +64,6 @@ export class LoginPage {
                 "sameSite": "None"
               }
         ]);
-        await this.page.goto(process.env.PROD_URL + '/app/today');
+        await this.page.goto(apiendpoint.home);
     }
 }

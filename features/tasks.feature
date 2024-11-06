@@ -2,9 +2,7 @@
 Feature: Tasks creation tests
 
   Background:
-    Given I visit home website
-    When I click on "Log in" on header bar
-    And I login with correct credentials
+    Given I login with correct credentials via API
     Then I validate homepage presence
 
   @create-tasks

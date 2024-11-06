@@ -12,7 +12,7 @@ test.beforeEach(async({page}) => {
     loginPage = pomanager.getLoginPage();
     homePage = pomanager.getHomePage();
 
-    const cookieSession = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, 'Cookie');
+    const cookieSession = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, constants.LOGIN_INFO.cookie);
     await loginPage.insertTokenSession(cookieSession);
 });
 
