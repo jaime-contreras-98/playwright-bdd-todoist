@@ -1,4 +1,5 @@
-import {Page, expect} from '@playwright/test';
+import 'dotenv/config';
+import {Page, expect, request} from '@playwright/test';
 import * as loginlocators from '../../page-object/locators/login-page-loc.json';
 import * as logindata from '../../fixtures/login-data.json';
 
@@ -19,5 +20,48 @@ export class LoginPage {
     public async assertIncorrectLoginMsg() {
         await expect(this.page.locator(loginlocators.errorMsgLabel)).toHaveText(logindata.wrongCredentials);
         await expect(this.page.locator(loginlocators.errorMsgLabel)).toBeVisible();
+    };
+
+    public async getLoginInfoApi(username: string, password: string, param: string) {
+        const context = await request.newContext();
+        const response = await context.post('https://app.todoist.com/api/v9.101/user/login', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Doist-Platform': 'web'
+            },
+            data: {
+                'email': username, 
+                'password': password,
+                'web_session': true
+            }
+        });
+
+        await expect(response.status()).toBe(200);
+        await expect(response.body()).not.toBe(null);
+
+        const responseBody = await response.json();
+        const bearerToken = 'Bearer ' + responseBody.token;
+        const cookieSession = response.headers()['set-cookie'].split('todoistd')[1].split('Domain')[0].replace(/[":,;]/g,"").slice(1).trim();
+        
+        if(param === 'Token') return bearerToken;
+        else if(param === 'Cookie') return cookieSession;
+
+        return null;
+    };
+
+    public async insertTokenSession(cookieSession: string) {
+        await this.page.context().addCookies([
+            {
+                "name": "todoistd",
+                "value": '"' + cookieSession + '"',
+                "domain": ".todoist.com",
+                "path": "/",
+                "expires": 1762013894.751695,
+                "httpOnly": true,
+                "secure": true,
+                "sameSite": "None"
+              }
+        ]);
+        await this.page.goto(process.env.PROD_URL + '/app/today');
     }
 }

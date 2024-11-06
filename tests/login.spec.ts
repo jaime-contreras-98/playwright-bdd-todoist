@@ -27,3 +27,9 @@ test('Basic correct login todoist', async () => {
   await loginPage.login(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password);
   await homePage.assertHomeElements();
 });
+
+test('Login via API', async () => {
+  const cookieSession = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, 'Cookie');
+  await loginPage.insertTokenSession(cookieSession);
+  await homePage.assertHomeElements();
+});
