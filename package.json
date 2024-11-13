@@ -8,7 +8,7 @@
     "loginTest": "npm run deleteAllureFolder; npx playwright test login.spec.ts --headed --project chromium; allure serve allure-results",
     "taskTest": "npm run deleteAllureFolder; npx playwright test tasks.spec.ts --headed --project chromium; allure serve allure-results",
     "bddLoginTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@login'; allure serve allure-results",
-    "bddTasksTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@tasks'; allure serve allure-results"
+    "bddTaskTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@task'; allure serve allure-results"
   },
   "repository": {
     "type": "git",

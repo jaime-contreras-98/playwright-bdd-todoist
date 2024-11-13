@@ -15,6 +15,11 @@
         "addedTaskNameLbl": "div[id*='task'] .task_content",
         "addedTaskDescrLbl": "div[id*='task'] .task_description"
     },
+    "taskEditorDiv": {
+        "nameInp": "//div[@aria-label='Task name']",
+        "descrInp": "div[aria-label*='escription']",
+        "saveBtn": "button[data-testid='task-editor-submit-button'] > span"
+    },
     "toastContainer": {
         "toastDiv": "div[data-testid='toasts-container'] div[role]",
         "toastText": "div[data-testid='toasts-container'] div[role] > div:nth-child(1)"

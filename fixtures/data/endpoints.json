@@ -1,11 +1,9 @@
 {
     "login": "https://app.todoist.com/api/v9.101/user/login",
+    "sync": "https://app.todoist.com/api/v9.101/sync",
     "home": "https://app.todoist.com/app/today",
-    "task": {
-        "create": "",
-        "edit": "",
-        "delete": ""
-    },
+    "inbox": "https://app.todoist.com/app/inbox",
+    "tasks": "https://api.todoist.com/rest/v2/tasks",
     "project": {
         "create": "",
         "edit": "",

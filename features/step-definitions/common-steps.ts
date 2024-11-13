@@ -11,6 +11,6 @@ Before(async function(this: CustomWorld) {
   pomanager = new POManager(this.config.page);
 });
 
-Given('I visit home website', {timeout: 10000}, async () => {
+Given('I visit home website', async () => {
   await pomanager.getBasePage().visitHomePage();
 });

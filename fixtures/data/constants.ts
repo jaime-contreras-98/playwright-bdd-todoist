@@ -13,7 +13,9 @@ export const LOGIN_INFO: {cookie: string, token: string} = {
     token: 'Token'
 };
 
-export const TASKS: {name: string, descr: string} = {
+export const TASKS: {name: string, descr: string, newName: string, newDescr: string} = {
     name: "Task Name: " + crypto.randomUUID(),
-    descr: "Task Description: " + crypto.randomUUID()
+    descr: "Task Description: " + crypto.randomUUID(),
+    newName: "Modified Task Name: " + crypto.randomUUID(),
+    newDescr: "Modified Task Description: " + crypto.randomUUID()
 };
