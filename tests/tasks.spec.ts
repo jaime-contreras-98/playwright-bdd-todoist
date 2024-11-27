@@ -45,13 +45,18 @@ test('Delete a task created via API', async () => {
     await homePage.validateTaskNotExists(constants.TASKS.name);
 });
 
-test.only('Check a task created via API', async () => {
+test('Check a task created via API', async () => {
     await homePage.createTaskViaApi(token, constants.TASKS.name, constants.TASKS.descr, homedata.priority.num[1]);
     await homePage.clickInboxMenu();
     await homePage.validateTaskExistsInbox(constants.TASKS.name, constants.TASKS.descr);
-
+    await homePage.checkTaskInbox(constants.TASKS.name);
+    await homePage.validateTaskWasChecked();
 });
 
 test('Add a subtask to task created via API', async () => {
-
+    await homePage.createTaskViaApi(token, constants.TASKS.name, constants.TASKS.descr, homedata.priority.num[2]);
+    await homePage.clickInboxMenu();
+    await homePage.validateTaskExistsInbox(constants.TASKS.name, constants.TASKS.descr);
+    await homePage.createSubTaskInbox(constants.TASKS.name, constants.SUBTASKS.name, constants.SUBTASKS.descr, null, null);
+    await homePage.validateSubTaskExistsInbox(constants.SUBTASKS.name, constants.SUBTASKS.descr);
 });

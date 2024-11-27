@@ -41,6 +41,22 @@ export class HomePage {
         await expect(this.page.locator(homelocators.toastContainer.toastText)).toHaveText(homedata.tasks.toastNew);
     };
 
+    public async createSubTaskInbox(taskName: string, subTaskName: string, taskDescription: string, dateTime: string, priority: string) {
+        await this.findTaskName(taskName);
+        await this.page.locator(homelocators.taskEditorDiv.addSubTaskBtn).click();
+        await this.page.locator(homelocators.newSubTaskDiv.taskNameInp).fill(subTaskName);
+        await this.page.locator(homelocators.newSubTaskDiv.descriptionInp).fill(taskDescription);
+        if (dateTime != null) {
+            await this.page.locator(homelocators.newSubTaskDiv.dueDateBtn).click();
+            await this.page.locator(homelocators.newSubTaskDiv.dueDateList).getByText(dateTime).click();
+        }
+        if (priority != null) {
+            await this.page.locator(homelocators.newSubTaskDiv.priorityBtn).click();
+            await this.page.locator(homelocators.newSubTaskDiv.priorityList).getByText(priority).click();
+        }
+        await this.page.locator(homelocators.newSubTaskDiv.addTaskBtn).click();
+    };
+
     public async findTaskName(taskName: string) {
         var taskNameIndex = null;
         const taskAddedName = this.page.locator(homelocators.newTaskDiv.addedTaskNameLbl);
@@ -71,14 +87,14 @@ export class HomePage {
 
     public async deleteTaskInbox(taskName: string) {
         await this.findTaskName(taskName);
-        await this.page.locator('div[data-testid="button-container"] button[aria-label="More actions"]').click();
-        await this.page.locator('//div[@role="menuitem"][7]').click();
-        await this.page.locator('button[data-autofocus=true][aria-disabled=false]').click();
+        await this.page.locator(homelocators.taskEditorDiv.moreOptionsBtn).click();
+        await this.page.locator(homelocators.taskEditorDiv.optionsMenu.deleteBtn).click();
+        await this.page.locator(homelocators.taskEditorDiv.optionsMenu.dialog.deleteBtn).click();
     };
 
     public async checkTaskInbox(taskName: string) {
         await this.findTaskName(taskName);
-        await this.page.locator('button[aria-label*="Checkbox for"]').check();
+        await this.page.locator(homelocators.taskEditorDiv.checkTaskBtn).click();
     };
 
     public async validateTaskModifiedName(oldTaskName: string, newTaskName: string, newTaskDescription: string) {
@@ -93,9 +109,25 @@ export class HomePage {
         expect(await this.page.locator(homelocators.newTaskDiv.addedTaskDescrLbl).last()).toContainText(taskDescription);
     };
 
+    public async validateSubTaskExistsInbox(taskName: string, taskDescription: string) {
+        expect(await this.page.locator(homelocators.newSubTaskDiv.subTasksLbl)).toContainText(homedata.subTasks.name);
+        expect(await this.page.locator(homelocators.newSubTaskDiv.addedTaskNameLbl).last()).toContainText(taskName);
+        expect(await this.page.locator(homelocators.newSubTaskDiv.addedTaskDescrLbl).last()).toContainText(taskDescription);
+    };
+
     public async validateTaskNotExists(taskName: string) {
         expect((await this.page.locator(homelocators.newTaskDiv.addedTaskNameLbl).allTextContents()).includes(taskName)).toBeFalsy();
         expect((await this.page.locator(homelocators.newTaskDiv.addedTaskNameLbl).allTextContents()).includes(taskName)).not.toBeTruthy();
+    };
+
+    public async validateTaskWasChecked() {
+        const buttons = this.page.locator(homelocators.taskEditorDiv.sideMenu.allBtns);
+        expect(await this.page.locator(homelocators.alert.alertDiv)).toBeVisible();
+        expect(await this.page.locator(homelocators.alert.alertDiv)).toContainText(homedata.tasks.checkedMsg);
+        expect(await this.page.locator(homelocators.taskEditorDiv.checkTaskBtn)).toHaveAttribute('aria-checked', 'true');
+
+        for (var i = 0; i < await buttons.count(); i++)
+            expect(await buttons.nth(i)).toHaveAttribute('aria-disabled', 'true');
     };
 
     public async createTaskViaApi(token: string, taskName: string, taskDescription: string, priorityNum: number) {

@@ -20,6 +20,10 @@
         "inbox": "Inbox"
     },
     "tasks": {
-        "toastNew": "Task added to Inbox"
+        "toastNew": "Task added to Inbox",
+        "checkedMsg": "1 task completed"
+    },
+    "subTasks": {
+        "name": "Sub-tasks"
     }
 }

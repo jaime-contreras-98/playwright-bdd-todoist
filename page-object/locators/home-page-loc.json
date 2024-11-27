@@ -15,13 +15,40 @@
         "addedTaskNameLbl": "div[id*='task'] .task_content",
         "addedTaskDescrLbl": "div[id*='task'] .task_description"
     },
+    "newSubTaskDiv": {
+        "taskNameInp": "//p[@data-placeholder='Task name']",
+        "descriptionInp": "//p[@data-placeholder='Description']",
+        "addTaskBtn": "//div[@id]  //button[@data-testid='task-editor-submit-button']",
+        "dueDateBtn": "div[aria-label='Set due date']",
+        "dueDateList": ".scheduler-suggestions > button",
+        "priorityBtn": "div[aria-label='Set priority']",
+        "priorityList": "div[id*=dropdown] > ul > li",
+        "addedTaskNameLbl": "div[id*='task'] .task_content",
+        "addedTaskDescrLbl": "div[id*='task'] .task_description",
+        "subTasksLbl": "button[aria-controls*='subtasks'] > span"
+    },
     "taskEditorDiv": {
         "nameInp": "//div[@aria-label='Task name']",
         "descrInp": "div[aria-label*='escription']",
-        "saveBtn": "button[data-testid='task-editor-submit-button'] > span"
+        "saveBtn": "button[data-testid='task-editor-submit-button'] > span",
+        "checkTaskBtn": "button[aria-label*='Checkbox for']",
+        "addSubTaskBtn": "//div[@data-testid='task-main-content-container'] //button /div",
+        "moreOptionsBtn": "div[data-testid='button-container'] button[aria-label='More actions']",
+        "optionsMenu": {
+            "deleteBtn": "//div[@role='menuitem'][7]",
+            "dialog": {
+                "deleteBtn": "button[data-autofocus=true][aria-disabled=false]"
+            }
+        },
+        "sideMenu": {
+            "allBtns": "div[data-testid='task-details-sidebar'] button"
+        }
     },
     "toastContainer": {
         "toastDiv": "div[data-testid='toasts-container'] div[role]",
         "toastText": "div[data-testid='toasts-container'] div[role] > div:nth-child(1)"
+    },
+    "alert": {
+        "alertDiv": "div[role='alert']"
     }
 }
