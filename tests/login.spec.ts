@@ -10,12 +10,10 @@ let homePage: any;
 
 test.beforeEach(async ({ page }) => {
   pomanager = new POManager(page);
-  basePage = pomanager.getBasePage();
   loginPage = pomanager.getLoginPage();
   homePage = pomanager.getHomePage();
 
-  await basePage.visitHomePage();
-  await basePage.clickLinkHeader(basedata.links.login);
+  await loginPage.visitLoginPage();
 });
 
 test('Basic incorrect login todoist', async () => {
@@ -29,7 +27,7 @@ test('Basic correct login todoist', async () => {
 });
 
 test('Login via API', async () => {
-  const cookieSession = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, 'Cookie');
+  const cookieSession = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, constants.LOGIN_INFO.cookie);
   await loginPage.insertTokenSession(cookieSession);
   await homePage.assertHomeElements();
 });

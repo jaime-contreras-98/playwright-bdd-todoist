@@ -8,7 +8,7 @@ var common = [
   '--parallel 5',
   '--require ./features/step-definitions/*.ts',
   '--require ./features/step-definitions/hooks/*.ts',
-  '--require-module ts-node/register',
+  '--require-module ts-node/register'
 ].join(' ');
 
 module.exports = {

@@ -14,3 +14,7 @@ Before(async function(this: CustomWorld) {
 Given('I visit home website', async () => {
   await pomanager.getBasePage().visitHomePage();
 });
+
+Given('I visit login website', async() => {
+  await pomanager.getLoginPage().visitLoginPage();
+});

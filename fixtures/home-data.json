@@ -7,13 +7,23 @@
         "one": "Priority 1",
         "two": "Priority 2",
         "three": "Priority 3",
-        "four": "Priority 4"
+        "four": "Priority 4",
+        "num": [
+            1,
+            2,
+            3,
+            4
+        ]
     },
     "sideBarOptions": {
         "search": "",
         "inbox": "Inbox"
     },
     "tasks": {
-        "toastNew": "Task added to Inbox"
+        "toastNew": "Task added to Inbox",
+        "checkedMsg": "1 task completed"
+    },
+    "subTasks": {
+        "name": "Sub-tasks"
     }
 }

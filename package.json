@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "deleteAllureFolder": "node -e \"require('fs').rmdirSync('allure-results', { recursive: true }); process.exit(0);\"",
-    "loginTest": "npm run deleteAllureFolder; npx playwright test login.spec.ts --headed --project chromium; allure serve allure-results",
-    "taskTest": "npm run deleteAllureFolder; npx playwright test tasks.spec.ts --headed --project chromium; allure serve allure-results",
-    "bddLoginTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@login'; allure serve allure-results",
-    "bddTasksTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@tasks'; allure serve allure-results"
+    "allureResults": "allure serve allure-results",
+    "loginTest": "npm run deleteAllureFolder; npx playwright test login.spec.ts --headed --project chromium; npm run allureResults",
+    "taskTest": "npm run deleteAllureFolder; npx playwright test tasks.spec.ts --headed --project chromium; npm run allureResults",
+    "loginHeadlessTest": "npm run deleteAllureFolder; npx playwright test login.spec.ts; npm run allureResults",
+    "taskHeadlessTest": "npm run deleteAllureFolder; npx playwright test tasks.spec.ts; npm run allureResults",
+    "bddLoginTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@login'; npm run allureResults",
+    "bddTaskTest": "npm run deleteAllureFolder; npx cucumber-js --tags '@task'; npm run allureResults"
   },
   "repository": {
     "type": "git",
