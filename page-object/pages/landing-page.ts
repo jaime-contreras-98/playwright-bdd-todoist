@@ -8,11 +8,11 @@ export class BasePage {
 
     constructor(page: any) {
         this.page = page;
-    }
+    };
 
     public async visitHomePage() {
         await this.page.goto(process.env.PROD_URL);
-    }
+    };
 
     public async clickLinkHeader(linkName: string) {
         switch(linkName) {
@@ -22,6 +22,5 @@ export class BasePage {
             default:
                 console.log('Invalid option.');
         }
-    }
-
+    };
 }

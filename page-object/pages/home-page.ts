@@ -22,6 +22,7 @@ export class HomePage {
         await expect(this.page.locator(homelocators.textLabel)).toHaveText(homedata.sideBarOptions.inbox);
     };
 
+    // TASKS
     public async createTaskInbox(taskName: string, taskDescription: string, dateTime: string, priority: string) {
         await this.clickInboxMenu();
         await this.page.locator(homelocators.sideBar.addTaskBtn).click();
@@ -92,6 +93,16 @@ export class HomePage {
         await this.page.locator(homelocators.taskEditorDiv.optionsMenu.dialog.deleteBtn).click();
     };
 
+    public async deleteAllTasks() {
+        var tasksNum = this.page.locator(homelocators.newTaskDiv.addedTaskNameLbl).count();
+        for (var i = 0; i < await tasksNum; i++) {
+            await this.page.locator(homelocators.editTaskDiv.moreActionsDiv).first().hover();
+            await this.page.locator(homelocators.editTaskDiv.moreActionsBtn).first().click();
+            await this.page.locator(homelocators.editTaskDiv.optionsMenu.deleteBtn).click();
+            await this.page.locator(homelocators.taskEditorDiv.optionsMenu.dialog.deleteBtn).click();
+        };
+    };
+
     public async checkTaskInbox(taskName: string) {
         await this.findTaskName(taskName);
         await this.page.locator(homelocators.taskEditorDiv.checkTaskBtn).click();
@@ -99,14 +110,18 @@ export class HomePage {
 
     public async validateTaskModifiedName(oldTaskName: string, newTaskName: string, newTaskDescription: string) {
         const expectTaskLoc = '//div /div';
+
         expect(await this.page.locator(homelocators.taskEditorDiv.nameInp).locator(expectTaskLoc)).not.toHaveText(oldTaskName);
         expect(await this.page.locator(homelocators.taskEditorDiv.nameInp).locator(expectTaskLoc)).toHaveText(newTaskName);
         expect(await this.page.locator(homelocators.taskEditorDiv.descrInp).locator(expectTaskLoc)).toHaveText(newTaskDescription);
     };
 
     public async validateTaskExistsInbox(taskName: string, taskDescription: string) {
-        expect(await this.page.locator(homelocators.newTaskDiv.addedTaskNameLbl).last()).toContainText(taskName);
-        expect(await this.page.locator(homelocators.newTaskDiv.addedTaskDescrLbl).last()).toContainText(taskDescription);
+        var listTasksNames = (await this.page.locator(homelocators.newTaskDiv.addedTaskNameLbl).allTextContents());
+        var listTasksDescr = (await this.page.locator(homelocators.newTaskDiv.addedTaskDescrLbl).allTextContents());
+
+        expect(listTasksNames).toContain(taskName);
+        expect(listTasksDescr).toContain(taskDescription);
     };
 
     public async validateSubTaskExistsInbox(taskName: string, taskDescription: string) {
@@ -130,6 +145,9 @@ export class HomePage {
             expect(await buttons.nth(i)).toHaveAttribute('aria-disabled', 'true');
     };
 
+    // PROJECTS
+
+    // API
     public async createTaskViaApi(token: string, taskName: string, taskDescription: string, priorityNum: number) {
         const context = await request.newContext();
         const response = await context.post(apiendpoints.tasks, {
@@ -148,4 +166,4 @@ export class HomePage {
         await expect(responseBody.description).toBe(taskDescription);
         await expect(responseBody.priority).toBe(priorityNum);
     };
-}
+};

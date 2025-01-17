@@ -8,12 +8,19 @@
         "taskNameInp": "//div[@id] //p[@data-placeholder='Task name']",
         "descriptionInp": "//div[@id] //p[@data-placeholder='Description']",
         "addTaskBtn": "//div[@id]  //button[@data-testid='task-editor-submit-button']",
-        "dueDateBtn": "div[aria-label='Set due date']",
+        "dueDateBtn": "div[aria-label='Set date']",
         "dueDateList": ".scheduler-suggestions > button",
         "priorityBtn": "div[aria-label='Set priority']",
         "priorityList": "div[id*=dropdown] > ul > li",
-        "addedTaskNameLbl": "div[id*='task'] .task_content",
-        "addedTaskDescrLbl": "div[id*='task'] .task_description"
+        "addedTaskNameLbl": "div[style='overflow-anchor: none;'] > div:nth-child(1) div[class='task_content']",
+        "addedTaskDescrLbl": "div[style='overflow-anchor: none;'] > div:nth-child(2) div[class='task_content']"
+    },
+    "editTaskDiv": {
+        "moreActionsDiv": "div[class*='task_list_item__actions']",
+        "moreActionsBtn": "div[class*='task_list_item__actions'] > button[aria-label='More actions']",
+        "optionsMenu": {
+            "deleteBtn": "div[role='menuitem'][data-action-hint*='delete']"
+        }
     },
     "newSubTaskDiv": {
         "taskNameInp": "//p[@data-placeholder='Task name']",

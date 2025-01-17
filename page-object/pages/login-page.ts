@@ -11,7 +11,11 @@ export class LoginPage {
 
     constructor(page: any) {
         this.page = page;
-    }
+    };
+
+    public async visitLoginPage() {
+        await this.page.goto(process.env.PROD_URL + "/auth/login");
+    };
 
     public async login(username: string, password: string) {
         await this.page.locator(loginlocators.emailInput).fill(username);

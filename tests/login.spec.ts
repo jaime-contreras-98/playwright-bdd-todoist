@@ -10,12 +10,10 @@ let homePage: any;
 
 test.beforeEach(async ({ page }) => {
   pomanager = new POManager(page);
-  basePage = pomanager.getBasePage();
   loginPage = pomanager.getLoginPage();
   homePage = pomanager.getHomePage();
 
-  await basePage.visitHomePage();
-  await basePage.clickLinkHeader(basedata.links.login);
+  await loginPage.visitLoginPage();
 });
 
 test('Basic incorrect login todoist', async () => {

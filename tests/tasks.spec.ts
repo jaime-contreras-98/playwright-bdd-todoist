@@ -2,21 +2,26 @@ import { test } from '@playwright/test';
 import { POManager } from '../page-object/pages/pomanager';
 import { HomePage } from '../page-object/pages/home-page';
 import * as homedata from '../fixtures/home-data.json';
+import * as basedata from '../fixtures/base-data.json';
 import * as constants from '../fixtures/data/constants';
 
 let pomanager: POManager;
 let loginPage: any;
 let homePage: any;
+let basePage: any;
 let token: HomePage;
 
 test.beforeEach(async ({ page }) => {
     pomanager = new POManager(page);
     loginPage = pomanager.getLoginPage();
+    basePage = pomanager.getBasePage();
     homePage = pomanager.getHomePage();
 
     token = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, constants.LOGIN_INFO.token);
-    const cookieSession = await loginPage.getLoginInfoApi(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password, constants.LOGIN_INFO.cookie);
-    await loginPage.insertTokenSession(cookieSession);
+    await basePage.visitLoginPage();
+    await basePage.clickLinkHeader(basedata.links.login);
+    await loginPage.login(constants.LOGIN_CREDENTIALS.email, constants.LOGIN_CREDENTIALS.password);
+    await homePage.assertHomeElements();
 });
 
 test('Create a new Task', async () => {
@@ -59,4 +64,17 @@ test('Add a subtask to task created via API', async () => {
     await homePage.validateTaskExistsInbox(constants.TASKS.name, constants.TASKS.descr);
     await homePage.createSubTaskInbox(constants.TASKS.name, constants.SUBTASKS.name, constants.SUBTASKS.descr, null, null);
     await homePage.validateSubTaskExistsInbox(constants.SUBTASKS.name, constants.SUBTASKS.descr);
+});
+
+test('Check a subtask of task created via API', async () => {
+    await homePage.createTaskViaApi(token, constants.TASKS.name, constants.TASKS.descr, homedata.priority.num[2]);
+    await homePage.clickInboxMenu();
+    await homePage.validateTaskExistsInbox(constants.TASKS.name, constants.TASKS.descr);
+    await homePage.createSubTaskInbox(constants.TASKS.name, constants.SUBTASKS.name, constants.SUBTASKS.descr, null, null);
+    await homePage.validateSubTaskExistsInbox(constants.SUBTASKS.name, constants.SUBTASKS.descr);
+});
+
+test.skip('Delete all tasks', async() => {
+    await homePage.clickInboxMenu();
+    await homePage.deleteAllTasks();
 });
